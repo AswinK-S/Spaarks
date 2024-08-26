@@ -1,12 +1,7 @@
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+const generateToken =require('../utils/jwt')
 
-
-//helper function to create jwt
-const generateToken = (id,role)=>{
-    return jwt.sign({id,role},process.env.JWTSECRET,{expiresIn:'1d'})
-}
 
 
 //register controller
@@ -58,7 +53,7 @@ const login = async(req,res)=>{
 
         res.status(200).json({
             id:user._id,
-            email:user.name,
+            email:user.email,
             name:user.name,
             message:'login success'
         })
@@ -66,6 +61,8 @@ const login = async(req,res)=>{
 
     } catch (error) {
         console.log(error.message)
+        res.status(500).json({ message: 'Server error' });
+
     }
 }
 
@@ -73,7 +70,7 @@ const login = async(req,res)=>{
 //userlogout
 const logout = async(req,res)=>{
     try {
-        res.clearCookie('token')
+        await res.clearCookie('token')
         res.status(200).json({message:'logout successful'})
     } catch (error) {
         console.error(error.message)
