@@ -37,16 +37,19 @@ const login = async(req,res)=>{
         const {email,password}=req.body
         console.log(email,password);
 
-        const user = await User.findOne(email)
+        const user = await User.findOne({email})
         if(!user){
             res.status(401).json({message:'user not exists in this mail'})
+            return
         }
 
         const isPasswordMatch = await bcrypt.compare(password,user?.password)
         if(!isPasswordMatch){
             res.status(401).json({message:'invalid credentials'})
+            return
         }
         const token = generateToken(user,'user') 
+        console.log('token', token)
         await res.cookie('token',token,{
             httpOnly:true,
             secure:process.env.NodeEnv,
@@ -57,6 +60,7 @@ const login = async(req,res)=>{
             id:user._id,
             email:user.name,
             name:user.name,
+            message:'login success'
         })
 
 
@@ -65,4 +69,19 @@ const login = async(req,res)=>{
     }
 }
 
-module.exports = {register,login}
+
+//userlogout
+const logout = async(req,res)=>{
+    try {
+        res.clearCookie('token')
+        res.status(200).json({message:'logout successful'})
+    } catch (error) {
+        console.error(error.message)
+    }
+}
+
+module.exports = {
+    register,
+    login,
+    logout
+}
