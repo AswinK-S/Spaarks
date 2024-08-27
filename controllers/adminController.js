@@ -56,8 +56,45 @@ const createRestaurant = async(req,res)=>{
 }
 
 
+const updateRestaurant = async (req, res) => {
+    try {
+        const restaurant = await Restaurant.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        if (!restaurant) {
+            return res.status(404).json({ message: 'Restaurant not found' });
+        }
+        res.status(200).json({ message: 'Restaurant updated successfully', restaurant });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+};
+
+const deleteRestaurant = async (req, res) => {
+    try {
+        const restaurant = await Restaurant.findByIdAndDelete(req.params.id);
+        if (!restaurant) {
+            return res.status(404).json({ message: 'Restaurant not found' });
+        }
+        res.status(200).json({ message: 'Restaurant deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+};
+
+const getRestaurants = async (req, res) => {
+    try {
+        const restaurants = await Restaurant.find();
+        res.status(200).json(restaurants);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+};
+
+
 module.exports = {
     login,
     logout,
-    createRestaurant
+    createRestaurant,
+    updateRestaurant,
+    deleteRestaurant,
+    getRestaurants
 }
