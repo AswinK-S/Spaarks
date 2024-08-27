@@ -8,8 +8,8 @@ const userAuth = require('../middlewares/userAuth')
 router.post('/register',validteRegitration,userController.register)
 router.post('/login',userController.login)
 router.get('/logout',userController.logout)
-router.get('/restaurants', userController.getRestaurantsWithinRadius);
-router.get('/restaurants/range', userController.getRestaurantsByRange);
+router.get('/restaurants',userAuth,userController.getRestaurantsWithinRadius);
+router.get('/restaurants/range',userAuth, userController.getRestaurantsByRange);
 
 
 module.exports = router

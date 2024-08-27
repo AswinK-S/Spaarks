@@ -48,7 +48,7 @@ const login = async(req,res)=>{
         console.log('token', token)
         await res.cookie('userToken',token,{
             httpOnly:true,
-            secure:process.env.NodeEnv,
+            secure:false,
             maxAge:24*60*60*1000
         })
 
@@ -90,22 +90,11 @@ const getRestaurantsWithinRadius = async (req, res) => {
             return res.status(400).json({ message: "Latitude and longitude are required" });
         }
 
-        const location = {
-            $geoWithin: {
-                $centerSphere: [[parseFloat(longitude), parseFloat(latitude)], (radius || maximumDistance) / 6378100]
-            }
-        };
+        // Parse distances to numbers
+        const minDistance = parseFloat(minimumDistance) || 0; // Set default to 0 if not provided
+        const maxDistance = parseFloat(maximumDistance) || parseFloat(radius); // Use radius if maxDistance is not provided
 
-        // Handle max and min distance
-        const distanceOptions = {};
-        if (minimumDistance) {
-            distanceOptions.$minDistance = parseFloat(minimumDistance);
-        }
-        if (maximumDistance) {
-            distanceOptions.$maxDistance = parseFloat(maximumDistance);
-        }
-
-        // Find the restaurants within the radius or range
+        // Construct the query
         const restaurants = await Restaurant.find({
             location: {
                 $near: {
@@ -113,12 +102,17 @@ const getRestaurantsWithinRadius = async (req, res) => {
                         type: "Point",
                         coordinates: [parseFloat(longitude), parseFloat(latitude)]
                     },
-                    ...distanceOptions
+                    $minDistance: minDistance,
+                    $maxDistance: maxDistance
                 }
             }
         });
 
-        console.log('res',restaurants);
+        console.log('res', restaurants);
+        if (restaurants.length === 0) {
+            return res.status(404).json({ message: "No restaurants found within the specified distance" });
+        }
+
         const formattedRestaurants = restaurants.map(restaurant => ({
             name: restaurant.name,
             description: restaurant.description,
@@ -137,6 +131,7 @@ const getRestaurantsWithinRadius = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 };
+
 
 // Get restaurants within a specific radius range
 const getRestaurantsByRange = async (req, res) => {
