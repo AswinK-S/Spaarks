@@ -1,4 +1,5 @@
 const Admin = require('../models/admin')
+const Restaurant = require('../models/restaurant')
 const bcrypt = require('bcrypt')
 const generateToken = require('../utils/jwt')
 
@@ -20,7 +21,7 @@ const login = async(req,res)=>{
         console.log('token', token)
         await res.cookie('adminToken',token,{
             httpOnly:true,
-            secure:process.env.NodeEnv,
+            secure:false,
             maxAge:15*60*1000,
             sameSite: 'Strict'
         })
@@ -41,7 +42,22 @@ const logout =async(req,res)=>{
     }
 }
 
+
+// create restaurant 
+const createRestaurant = async(req,res)=>{
+    try{
+        const restaurantData = req.body
+        await Restaurant.create(restaurantData)
+        res.status(200).json({message:'Restaurant created'})
+
+    }catch(error){
+        console.error(error.message)
+    }
+}
+
+
 module.exports = {
     login,
-    logout
+    logout,
+    createRestaurant
 }
