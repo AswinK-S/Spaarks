@@ -1,6 +1,6 @@
 const {body,validationResult} = require('express-validator')
 
-//Registration validation rules
+//Registration validation middleware for user registration
 const validteRegitration =[
     body('name')
     .notEmpty()

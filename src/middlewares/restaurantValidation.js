@@ -1,5 +1,6 @@
 const {body,validationResult} = require('express-validator')
 
+// validation for creating restaurants 
 const validateRestaurant = [
     body('name')
         .trim()

@@ -8,7 +8,7 @@ const {validateRestaurant} = require('../middlewares/restaurantValidation')
 
 router.post('/login',adminController.login)
 router.post('/logout',adminController.logout)
-
+// adminroute to do CRUD operation on restaurants 
 router.post('/createRestaurant',adminAuth,validateRestaurant,adminController.createRestaurant)
 router.post('/update/:id',adminAuth,validateRestaurant,adminController.updateRestaurant)
 router.post('/delete',adminAuth,adminController.deleteRestaurant)

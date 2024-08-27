@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 
+// middleware to check user is authenticated or not 
 const userAuth = (req,res,next)=>{
     try {
         const token = req.cookies.userToken

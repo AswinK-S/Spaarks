@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 
+//middleware to check admin is authenticated or not
 const adminAuth = (req,res,next)=>{
     try {
         const token = req.cookies.adminToken
