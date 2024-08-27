@@ -90,21 +90,18 @@ Replace <username>, <password>, <database>, and your_jwt_secret with your MongoD
 ### Build the Docker Image
 If you haven't already built the Docker image, do so with:
 
-bash
-Copy code
+
 docker build -t your-dockerhub-username/your-repository-name:tag .
 Push the Docker Image (if needed)
 If you haven’t pushed the image yet, tag and push it to Docker Hub:
 
-bash
-Copy code
+
 docker tag your-image-name your-dockerhub-username/your-repository-name:tag
 docker push your-dockerhub-username/your-repository-name:tag
 Run the Docker Container
 Start a new container from the image:
 
-bash
-Copy code
+
 docker run -d -p 5000:5000 --name your-container-name --env-file .env your-dockerhub-username/your-repository-name:tag
 --env-file .env loads environment variables from the .env file into the container.
 
