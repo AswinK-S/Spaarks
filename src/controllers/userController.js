@@ -1,6 +1,6 @@
 const User = require('../models/user')
 const Restaurant = require('../models/restaurant');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const generateToken =require('../utils/jwt')
 
 

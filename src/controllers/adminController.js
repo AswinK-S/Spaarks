@@ -1,6 +1,6 @@
 const Admin = require('../models/admin')
 const Restaurant = require('../models/restaurant')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const generateToken = require('../utils/jwt')
 
 // adminlogin 
