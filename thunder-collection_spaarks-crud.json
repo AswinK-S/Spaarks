@@ -1,0 +1,207 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "spaarks-crud",
+    "collectionId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+    "dateExported": "2024-08-27T16:28:38.797Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "a3930155-6d70-4663-880b-19ce109ad66e",
+            "colId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+            "containerId": "",
+            "name": "userLogin",
+            "url": "http://localhost:5000/user/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-08-27T15:28:21.244Z",
+            "modified": "2024-08-27T15:29:01.342Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"aswinkalathur11@gmail.com\",\n \"password\":\"aswin@123\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "715c1300-e666-4bac-8351-b5423514a2c5",
+            "colId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+            "containerId": "",
+            "name": "userRegistration",
+            "url": "http://localhost:5000/user/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-08-27T15:29:29.881Z",
+            "modified": "2024-08-27T15:31:40.474Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Akshay\",\n  \"email\":\"akshay@gmail.com\",\n  \"password\":\"Akshay@123\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "39049c3c-d3d5-4c72-b015-3ae0ddd29c4a",
+            "colId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+            "containerId": "",
+            "name": "userlogout",
+            "url": "http://localhost:5000/user/logout",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-08-27T15:32:27.252Z",
+            "modified": "2024-08-27T15:33:04.320Z",
+            "headers": []
+        },
+        {
+            "_id": "aa973785-7444-4ce0-9ae5-74ad16aeb872",
+            "colId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+            "containerId": "",
+            "name": "getRestaurantsWithinRadius",
+            "url": "http://localhost:5000/user/restaurants?latitude=17.343242&longitude=78.342343&radius=1000",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-08-27T15:34:41.208Z",
+            "modified": "2024-08-27T15:35:03.999Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "latitude",
+                    "value": "17.343242",
+                    "isPath": false
+                },
+                {
+                    "name": "longitude",
+                    "value": "78.342343",
+                    "isPath": false
+                },
+                {
+                    "name": "radius",
+                    "value": "1000",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "e2ca1b50-e4ba-4531-b38a-cb3beda21d3d",
+            "colId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+            "containerId": "",
+            "name": "getRestaurantsByRange",
+            "url": "http://localhost:5000/user/restaurants/range?latitude=17.343242&longitude=78.342343&minimumDistance=500&maximumDistance=2000",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-08-27T15:36:46.805Z",
+            "modified": "2024-08-27T15:38:17.493Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "latitude",
+                    "value": "17.343242",
+                    "isPath": false
+                },
+                {
+                    "name": "longitude",
+                    "value": "78.342343",
+                    "isPath": false
+                },
+                {
+                    "name": "minimumDistance",
+                    "value": "500",
+                    "isPath": false
+                },
+                {
+                    "name": "maximumDistance",
+                    "value": "2000",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "f1276692-3ea4-4b00-bc5c-7d09465fd5fe",
+            "colId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+            "containerId": "",
+            "name": "adminLogin",
+            "url": "http://localhost:5000/admin/login",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2024-08-27T16:13:08.862Z",
+            "modified": "2024-08-27T16:15:02.103Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"admin@gmail.com\",\n  \"password\":\"aswin@123\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "4047b871-a91f-4efc-afb4-71c4dace7618",
+            "colId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+            "containerId": "",
+            "name": "createRestaurant",
+            "url": "http://localhost:5000/admin/createRestaurant",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2024-08-27T16:16:54.376Z",
+            "modified": "2024-08-27T16:17:26.192Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n    \"name\": \"New Restaurant\",\r\n    \"description\": \"A cozy place with delicious food.\",\r\n    \"location\": {\r\n        \"type\": \"Point\",\r\n        \"coordinates\": [78.343242, 17.343242]\r\n    },\r\n    \"ratings\": [5, 4, 3]\r\n}\r\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "a53a40ab-2696-49e4-88b6-161035058131",
+            "colId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+            "containerId": "",
+            "name": "updateRestaurant",
+            "url": "http://localhost:5000/admin/update/66cd297337fd50de27735f90",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2024-08-27T16:18:21.887Z",
+            "modified": "2024-08-27T16:21:29.570Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\"name\":\" Hotel Tasty\",\"description\":\"Updated description with new name\",\"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [78.343242, 17.343242]\n    },\n    \"ratings\": [5, 4, 3]}",
+                "form": []
+            }
+        },
+        {
+            "_id": "04f453c4-828e-4702-a137-adb4709b2e74",
+            "colId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+            "containerId": "",
+            "name": "getRestaurants",
+            "url": "http://localhost:5000/admin/getrestaurants",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-08-27T16:22:01.821Z",
+            "modified": "2024-08-27T16:22:32.078Z",
+            "headers": []
+        },
+        {
+            "_id": "56943f61-a8d1-43eb-a619-02d9d8671de4",
+            "colId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+            "containerId": "",
+            "name": "deleteRestaurant",
+            "url": "http://localhost:5000/admin/delete/66cd297337fd50de27735f90",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2024-08-27T16:22:59.369Z",
+            "modified": "2024-08-27T16:27:14.752Z",
+            "headers": []
+        },
+        {
+            "_id": "ab5b5f75-858f-4e5c-b82f-c530a08854cc",
+            "colId": "baa2b2e3-7848-42b1-9b71-1245f3462ec5",
+            "containerId": "",
+            "name": "adminLogout",
+            "url": "http://localhost:5000/admin/logout",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2024-08-27T16:27:40.825Z",
+            "modified": "2024-08-27T16:28:01.606Z",
+            "headers": []
+        }
+    ],
+    "ref": "WNPMMgONWTARHj1mrn_FdzvpWWkLUL67b0rTmYnXTs0J3agLJ2F4tWFwAv92XJtUaPiNPv993P_6HiuIqHXcJg"
+}

@@ -7,11 +7,11 @@ const {validateRestaurant} = require('../middlewares/restaurantValidation')
 
 
 router.post('/login',adminController.login)
-router.post('/logout',adminController.logout)
+router.get('/logout',adminController.logout)
 // adminroute to do CRUD operation on restaurants 
 router.post('/createRestaurant',adminAuth,validateRestaurant,adminController.createRestaurant)
 router.post('/update/:id',adminAuth,validateRestaurant,adminController.updateRestaurant)
-router.post('/delete',adminAuth,adminController.deleteRestaurant)
+router.post('/delete/:id',adminAuth,adminController.deleteRestaurant)
 router.get('/getrestaurants',adminAuth,adminController.getRestaurants)
 
 module.exports = router

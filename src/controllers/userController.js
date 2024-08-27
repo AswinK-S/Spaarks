@@ -135,8 +135,9 @@ const getRestaurantsWithinRadius = async (req, res) => {
 
 // Get restaurants within a specific radius range
 const getRestaurantsByRange = async (req, res) => {
+    
     const { latitude, longitude, minimumDistance, maximumDistance } = req.query;
-
+    
     try {
         const restaurants = await Restaurant.aggregate([
             {
@@ -146,7 +147,6 @@ const getRestaurantsByRange = async (req, res) => {
                         coordinates: [parseFloat(longitude), parseFloat(latitude)]
                     },
                     distanceField: 'distance',
-                    minDistance: parseFloat(minimumDistance),
                     maxDistance: parseFloat(maximumDistance),
                     spherical: true
                 }
@@ -161,12 +161,13 @@ const getRestaurantsByRange = async (req, res) => {
                 }
             }
         ]);
-
+            
         res.status(200).json(restaurants);
     } catch (error) {
         console.error(error.message);
         res.status(500).json({ message: 'Server error' });
     }
+    
 };
 
 
