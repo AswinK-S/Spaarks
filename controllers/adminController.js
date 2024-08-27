@@ -3,7 +3,7 @@ const Restaurant = require('../models/restaurant')
 const bcrypt = require('bcrypt')
 const generateToken = require('../utils/jwt')
 
-
+// adminlogin 
 const login = async(req,res)=>{
     try {
         const {email,password} =req.body
@@ -33,6 +33,7 @@ const login = async(req,res)=>{
     }
 }
 
+//admin logout
 const logout =async(req,res)=>{
     try {
         await res.clearCookie('adminToken')
@@ -55,7 +56,7 @@ const createRestaurant = async(req,res)=>{
     }
 }
 
-
+// update the restaurant 
 const updateRestaurant = async (req, res) => {
     try {
         const restaurant = await Restaurant.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
@@ -68,6 +69,7 @@ const updateRestaurant = async (req, res) => {
     }
 };
 
+//delete the restaurants based on id
 const deleteRestaurant = async (req, res) => {
     try {
         const restaurant = await Restaurant.findByIdAndDelete(req.params.id);
@@ -80,6 +82,7 @@ const deleteRestaurant = async (req, res) => {
     }
 };
 
+//get the details of all restaurants
 const getRestaurants = async (req, res) => {
     try {
         const restaurants = await Restaurant.find();

@@ -12,6 +12,6 @@ router.post('/logout',adminController.logout)
 router.post('/createRestaurant',adminAuth,validateRestaurant,adminController.createRestaurant)
 router.post('/update/:id',adminAuth,validateRestaurant,adminController.updateRestaurant)
 router.post('/delete',adminAuth,adminController.deleteRestaurant)
-router.post('/getrestaurants',adminAuth,adminController.getRestaurants)
+router.get('/getrestaurants',adminAuth,adminController.getRestaurants)
 
 module.exports = router
