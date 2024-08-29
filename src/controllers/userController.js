@@ -9,7 +9,6 @@ const generateToken =require('../utils/jwt')
 const register =async (req,res)=>{
     try {
         const {name,email,password} = req.body
-        console.log('req',name,email,password);
         const existUser = await User.findOne({email})
 
         if(existUser){
@@ -31,7 +30,6 @@ const register =async (req,res)=>{
 const login = async(req,res)=>{
     try {
         const {email,password}=req.body
-        console.log(email,password);
 
         const user = await User.findOne({email})
         if(!user){
@@ -45,7 +43,6 @@ const login = async(req,res)=>{
             return
         }
         const token = generateToken(user,'user') 
-        console.log('token', token)
         await res.cookie('userToken',token,{
             httpOnly:true,
             secure:false,

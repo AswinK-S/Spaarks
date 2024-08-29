@@ -18,7 +18,6 @@ const login = async(req,res)=>{
         }
 
         const token = generateToken(admin,'admin')
-        console.log('token', token)
         await res.cookie('adminToken',token,{
             httpOnly:true,
             secure:false,
